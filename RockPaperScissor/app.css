@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Monomaniac+One&family=Poppins:wght@300;400;700;800;900&display=swap');
+
+/* font-family: 'Bruno Ace', cursive;
+font-family: 'Monomaniac One', sans-serif;
+font-family: 'Poppins', sans-serif; */
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Monomaniac One','Poppins', sans-serif;
+}
+
+.container {
+  background: url('https://images6.alphacoders.com/704/704120.png') no-repeat center;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  background-color: black;
+  opacity: 0.6;
+}
+
+.title{
+  background: -webkit-linear-gradient(#ff0022, #5500dde8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+.header{
+  z-index: 48;
+}
+.section{
+  z-index: 49;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-btn {
+  font-size: 6rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-image:
+    linear-gradient(to bottom,
+      rgb(162, 6, 201),
+      rgba(0, 0, 0, 0)) 1 100%;
+  padding: 1rem;
+  /* transition: 300ms; */
+}
+
+#rock {
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#paper {
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#scissor {
+  background-color: #00DBDE;
+  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.input-btn i:hover {
+  outline: none;
+  cursor: pointer;
+  transform: scale(125%);
+  transition: 300ms ease-in-out;
+  background-color: #08AEEA;
+  background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ui- Message */
+
+.round-container{
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+    text-transform: uppercase;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  }
+  .round{
+    border-width: 2px;
+    border-style: solid;
+    border-image:
+      linear-gradient(to bottom,
+        rgb(162, 6, 201),
+        rgba(0, 0, 0, 0)) 1 100%;
+    padding: 0 1rem 0 1rem;
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0 2rem;
+ 
+  }
+
+  .round-info{
+    background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/223e6792880429.5e569ff84ebef.gif') no-repeat center center;
+    border-radius: .6rem;
+    min-height: 108px;
+    border: 1px solid blueviolet;
+  }
+
+  .round-output{
+    color: white;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin: .5rem 0 0 0;
+
+  }
+  .players{
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    /* padding: 1rem; */
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    /* border-top: transparent; */
+  }
+
+  .user-score {
+    display: flex;
+    gap: .3rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .choices{
+    background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/223e6792880429.5e569ff84ebef.gif') no-repeat center center;
+    border-radius: .6rem;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid blueviolet;
+    margin: 1rem 0;
+    min-height: 210px;
+  }
+
+  .user-choice{
+    transform: rotate(90deg);
+    font-size: 5rem;
+
+  }
+  .computer-choice{
+    transform: rotate(-90deg);
+    font-size: 5rem;
+  }
+
+
+
+/* .slide-in {
+  opacity: 1;
+  transform: translateX(0);
+} */
+
+.fade-out {
+  opacity: 0;
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(90deg);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) rotate(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(-90deg);
+  }
+}
+
+
+.animated {
+  animation: slide-in 0.6s ease;
+}
+.animatedLeft {
+  animation: slide-left .6s ease;
+}
+
+
+.user-text{
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  /* background: #000; */
+  text-align: center;
+}
+
+.show-user-choice{
+  display: flex;
+  gap: 2rem;
+}
+
+.show-user-name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  /* background: black; */
+  color: white;
+  width: 100%;
+}
+
+.modal{
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 13rem;
+  min-width: 23rem;
+  border-radius: .6rem;
+  background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/223e6792880429.5e569ff84ebef.gif') no-repeat center center;
+  border: 1px solid rgb(255, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  display: none;
+  z-index: 50;
+}
+.show-modal{
+  display: block;
+}
+.play-again{
+  padding: .6rem 2.4rem;
+  background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%);
+  border: transparent;
+  outline: none;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase; 
+  
+}
+
+.play-again:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #0af36b;
+  text-decoration: none;
+  cursor: pointer;
+}
+.message-content{
+  font-size: 1.6rem;
+}
+.footer{
+  color: rgb(116, 99, 99);
+  margin-top: 3rem;
+}
+a{
+  color: #69138b;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+  color: #f7f3f3;
+}
