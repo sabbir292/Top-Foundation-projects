@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Monomaniac+One&family=Poppins:wght@300;400;700;800;900&display=swap');
+
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Monomaniac One', 'Poppins', sans-serif;
+    background: url('https://i.pinimg.com/originals/1d/a3/66/1da3663ce1d7d0f6098a31a667e862b4.gif');
+    background-size: cover;
+    /* background-color: rgba(32, 143, 218, 0.671); */
+}
+
+.container {
+    border: 1px solid black;
+    padding: 1rem;
+    background: rgba(134, 159, 172, 0.94);
+    border-radius: 1rem;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(191, 213, 218, 0.15);
+    overflow: hidden;
+    width: 180px;
+    height: 338px;
+}
+
+.display {
+    /* background-color: rgba(255, 255, 255, 0.726); */
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding: 2rem 0rem;
+    height: 3rem;
+    font-size: 1.4rem;
+    color: rgba(3, 3, 3, 0.644);
+
+
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .4rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: transparent;
+    background: rgba(226, 231, 231, 0.62);
+    border-radius: .5rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    color: rgba(2, 2, 2, 0.575);
+}
+
+.btn:hover {
+    background: rgba(12, 12, 12, 0.58);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.1px);
+    -webkit-backdrop-filter: blur(10.1px);
+    color: rgba(233, 232, 232, 0.801);
+    transition: .3s ease;
+}
+
+.plus {
+    background: #3183a394;
+    grid-row: span 2;
+    height: 3rem;
+}
+
+.equal {
+    background: #3183a394;
+    grid-row: span -2;
+    height: 3rem;
+    margin-top: -1.5rem;
+}
+
+.zero {
+    background: #3183a394;
+    grid-column: span 2;
+    width: 4.32rem;
+}
+.oparator{
+    color: rgba(255, 115, 0, 0.829);
+    background: rgba(0, 0, 0, 0.788);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.3px);
+-webkit-backdrop-filter: blur(10.3px);
+}
+.clear,
+.all-clear{
+    background: rgba(41, 189, 226, 0.788);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.3px);
+    -webkit-backdrop-filter: blur(10.3px);
+}
+.overlay{
+    background-color: #000;
+    opacity: .6;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
