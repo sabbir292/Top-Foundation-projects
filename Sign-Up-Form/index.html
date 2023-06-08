@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Sign-Up-Form</title>
+</head>
+<body>
+    <main class="container">
+        <div class="side-bg"></div>
+        <div class="form-cont">
+            <h3 class="desc">HOMO SAPIENS! are born to explore. We born in the pale blue dot. but destined to live among the  stars. Be the the part of the Journey</h3>
+            <div class="form-area">
+                <form action="" method="get" class="form">
+                    <div>
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" name="first_name" placeholder="eg. Jonh" minlength="3" maxlength="8" required>
+                    </div>
+                    <div>
+                        <label for="last-name">last name</label>
+                        <input type="email" id="last-name" name="last_name" placeholder="eg. Doe" minlength="3" maxlength="8" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" minlength="3" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/." required>
+                    </div>
+                    <div>
+                        <label for="phone">Phone number</label>
+                        <input type="tel" autocomplete="cc-number" id="phone" name="phone" min="6" max="14" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="text" id="password" name="password" minlength="8" maxlength="16" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
+                         required>
+                    </div>
+                    <div>
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="text" id="confirm-password" name="confirm_password" minlength="8" maxlength="16" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
+                         required>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- Javascript -->
+    <script src="app.js"></script>
+</body>
+</html>
