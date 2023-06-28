@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* reset */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: 'Maven Pro', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* layout */
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background: #ccc6c6;
+}
+
+.header {
+  width: 100vw;
+  min-height: 40px;
+  background: #000;
+  color: white;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+/* addd book btn */
+.add{
+  display: grid;
+  place-items: center;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  /* background-color: rebeccapurple; */
+  bottom: 8%;
+  right: 5%;
+  transition: 300ms ease-in;
+  z-index: 11;
+}
+.add i{
+  font-size: 2rem;
+}
+.add i:hover{
+  color: gray;
+  cursor: pointer;
+}
+
+.add.rotate{
+  transform: rotate(45deg);
+
+}
+
+.library-area {
+  /* border: 2px solid orange; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 700px) {
+  .library-area{
+    display: grid;
+    place-items: start;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* ---- */
+/* fonrm -mobile */
+.form-area {
+  width: 90vw;
+  position: absolute;
+  background-color: rgb(255, 252, 252);
+  border-radius: 12px;
+  padding: 30px;
+  display: grid;
+  /* align-content: center; */
+  justify-content: center;
+  max-width: 653px;
+  display: none;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.form-area.show-form {
+  display: grid;
+}
+
+
+form input,
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
+.form>h3 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.form .input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form label {
+  font-weight: 500;
+  text-transform: capitalize;
+  margin: 6px 0;
+}
+
+.form label:hover {
+  cursor: pointer;
+}
+
+.form input {
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 500;
+}
+
+.checkbox-cont {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox-cont input {
+  appearance: auto;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  width: 20px;
+}
+
+.form button {
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: .9rem;
+}
+
+.form button:hover {
+  cursor: pointer;
+  background-color: aliceblue;
+}
+
+/* card */
+.card {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.808);
+  margin: 10px;
+  width: 250px;
+  height: 200px;
+  padding: 20px;
+  display: grid;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+
+.delete-btn{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  transition: 300ms;
+}
+.deleteBtn:hover{
+  transform: rotate(360deg);
+}
+
+.card span{
+  font-weight: 600;
+}
+.card button {
+  margin-top: auto;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.card-author,
+.card-pages {
+  font-size: .9rem;
+}
+
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 30px;
+  background-color: #000;
+
+  color: white;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
