@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>TicTacToe</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-text">TicTacToe</div>
+            <div class="turn">Player One</div>
+
+            <form action="" method="get" class="play-against">
+                <label for="opponents">Play Against</label>
+                <select name="players" id="opponents">
+                    <option value="computer" selected>Computer</option>
+                    <option value="player2">Another Player</option>
+                </select>
+                <label for="difficulty">Difficulty</label>
+                <select name="levels" id="difficulty">
+                    <option value="easy" selected>Easy</option>
+                    <option value="unbeatable">Unbeatable</option>
+                </select>
+            </form>
+
+        </div>
+        <div class="gameboard"></div>
+        <div class="footer">..footer</div>
+    </div>
+
+    <!-- js -->
+    <script src="app.js"></script>
+</body>
+</html>
