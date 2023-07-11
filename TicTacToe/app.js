@@ -12,37 +12,37 @@ let Difficulty = 'unbeatable'
 
 
 
-function resetBoard(){
-moves = []
-winner = null
-playersTurn = 'player1'
-opponent = opponents.value
-opponentSymbol = 'O'
+function resetBoard() {
+  moves = []
+  winner = null
+  playersTurn = 'player1'
+  opponent = opponents.value
+  opponentSymbol = 'O'
 
-const cells = document.querySelectorAll('.cell')
+  const cells = document.querySelectorAll('.cell')
 
-for (let i = 0; i < gameboard.length; i++) {
-  for (let j = 0; j < gameboard[0].length; j++) {
-    if (gameboard[i][j] !== '') {
-      gameboard[i][j] = ''
+  for (let i = 0; i < gameboard.length; i++) {
+    for (let j = 0; j < gameboard[0].length; j++) {
+      if (gameboard[i][j] !== '') {
+        gameboard[i][j] = ''
+      }
     }
   }
+
+  cells.forEach(cell => {
+    cell.textContent = ''
+  })
+
 }
 
-cells.forEach(cell=>{
-  cell.textContent = ''
-})
-
-}
-
-function players(name,symbol){
-  const getPlayersName = ()=>{
+function players(name, symbol) {
+  const getPlayersName = () => {
     return name
   }
-  const getPlayerSymbol = ()=>{
+  const getPlayerSymbol = () => {
     return symbol
   }
-  return {getPlayersName,getPlayerSymbol}
+  return { getPlayersName, getPlayerSymbol }
 }
 
 
@@ -52,7 +52,7 @@ const turn = document.querySelector('.turn')
 
 
 
-window.addEventListener('DOMContentLoaded',()=>{
+window.addEventListener('DOMContentLoaded', () => {
   opponents.selectedIndex = 0
   difficulty.selectedIndex = 1
 })
@@ -62,20 +62,19 @@ opponents.addEventListener('input', selectOpponent)
 difficulty.addEventListener('input', selectDifficulty)
 
 
-function selectOpponent(){
-    let selectedPlayer = opponents.value
-    const Player = players(selectedPlayer,'O')
-    opponent = Player.getPlayersName()
-    opponentSymbol = Player.getPlayerSymbol()
-    console.log({opponent,opponentSymbol})
-    
-    resetBoard()
+function selectOpponent() {
+  let selectedPlayer = opponents.value
+  const Player = players(selectedPlayer, 'O')
+  opponent = Player.getPlayersName()
+  opponentSymbol = Player.getPlayerSymbol()
+
+  resetBoard()
 }
 
-function selectDifficulty(){
-   Difficulty = difficulty.value
-   console.log(Difficulty)
-   resetBoard()
+function selectDifficulty() {
+  Difficulty = difficulty.value
+
+  resetBoard()
 }
 
 function possibleMoves(originBoard) {
@@ -83,7 +82,7 @@ function possibleMoves(originBoard) {
   for (let i = 0; i < originBoard.length; i++) {
     for (let j = 0; j < originBoard[0].length; j++) {
       if (originBoard[i][j] === '') {
-        freeSpaces.push([i,j])
+        freeSpaces.push([i, j])
       }
     }
   }
@@ -110,6 +109,8 @@ const cells = document.querySelectorAll('.cell')
 cells.forEach(cell => {
   cell.addEventListener('click', makeMove)
 })
+
+
 function bestMove() {
   const freeSpace = possibleMoves(gameboard);
 
@@ -148,6 +149,7 @@ function bestMove() {
     moves.push([bestMove[0], bestMove[1]]);
     playersTurn = 'player1';
     getWinner(moves);
+    showModal()
   }
 }
 
@@ -209,12 +211,9 @@ function minimax(board, depth, isMaximizing, alpha, beta) {
 function makeMove() {
   const cordinate = this.getAttribute('data')
   const coArr = cordinate.split(',')
-  // console.log(coArr)
-
   const freeSpace = possibleMoves(gameboard)
 
   if (freeSpace.length > 0 && playersTurn === 'player1' && !this.textContent && !winner) {
-    console.log('p1')
     const row = parseInt(coArr[0])
     const col = parseInt(coArr[1])
     moves.push([row, col])
@@ -222,24 +221,23 @@ function makeMove() {
     this.textContent = 'x'
     updateCellDisplay(coArr[0], coArr[1], "X")
 
-    if(opponent === 'computer'){
-      // console.log(opponent)
+    if (opponent === 'computer') {
+
       playersTurn = 'computer'
       function delayedFunction() {
-        // Your function logic goes here
-        console.log("Delayed function called after 200ms");
+
         bestMove()
       }
-      
+
       setTimeout(delayedFunction, 200);
-    }else if(opponent === 'player2'){
-      // console.log(opponent)
+    } else if (opponent === 'player2') {
       playersTurn = 'player2'
     }
     getWinner(moves)
+    showModal()
   }
 
- else if (freeSpace.length > 0 && opponent === 'player2' && playersTurn === 'player2' && !winner) {
+  else if (freeSpace.length > 0 && opponent === 'player2' && playersTurn === 'player2' && !winner) {
     const row = parseInt(coArr[0])
     const col = parseInt(coArr[1])
     moves.push([row, col])
@@ -248,6 +246,7 @@ function makeMove() {
     updateCellDisplay(coArr[0], coArr[1], opponentSymbol)
     playersTurn = 'player1'
     getWinner(moves)
+    showModal()
   }
 }
 
@@ -276,7 +275,6 @@ function getWinner(moves) {
 
   for (let [row, column] of moves) {
     let value = (count % 2) === 0 ? 1 : -1
-    // console.log(value)
     rows[row] += value
     cols[column] += value
 
@@ -287,32 +285,59 @@ function getWinner(moves) {
       antiDiag += value
     }
 
-    // console.log([rows[row], cols[column], diagonal, antiDiag, count])
-
     if ([rows[row], cols[column], diagonal, antiDiag].includes(3)) {
-      winner = 'a'
+      winner = 'player1'
       score = -10
-      console.log({winner,score})
       return score
     }
-    else if([rows[row], cols[column], diagonal, antiDiag].includes(-3)) {
-      winner = 'computer'
+    else if ([rows[row], cols[column], diagonal, antiDiag].includes(-3)) {
+      if (opponent === 'computer') {
+        winner = 'computer'
+      }
+      else if (opponent === 'player2') {
+        winner = 'player2'
+      }
       score = 10
-      console.log({winner,score})
       return score
     }
     count++
   }
   if (count < 9) {
-    console.log('pending')
     winner = null
     return 'pending'
   }
   else {
     winner = 'draw'
     score = 0
-    console.log({winner,score})
     return score
   }
-  
+
+}
+
+const modal = document.querySelector('.modal')
+const playAgainBtn = document.querySelector('.play-again')
+const messageArea = document.querySelector('.message')
+playAgainBtn.addEventListener('click', closeModal)
+
+function showModal() {
+  if (winner) {
+    modal.classList.add('show')
+
+    if (winner === 'draw') {
+      messageArea.textContent = `It's a draw!`
+    }
+    if (winner === 'player2') {
+      messageArea.textContent = `Player Two has won the Game!`
+    }
+    if (winner === 'computer') {
+      messageArea.textContent = `Oops! AI! have defeated you!`
+    }
+    if (winner === 'player1') {
+      messageArea.textContent = `Hurrah! You have won the game!`
+    }
+  }
+}
+function closeModal() {
+  modal.classList.remove('show')
+  resetBoard()
 }

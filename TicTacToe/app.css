@@ -71,17 +71,17 @@
    font-weight: 600;
  }
 
- 
+
  .logo-text {
    align-self: center;
    font-size: 2rem;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
+ }
+
+ form {
+   display: flex;
+   flex-direction: column;
+ }
+
 
  form label {
    margin-bottom: .5rem;
@@ -98,45 +98,76 @@
  }
 
  @media screen and (min-width: 700px) {
-  .header{
-    max-height: 10rem;
-  }
-  form{
-    flex-direction: row;
-  }
-  form label{
-    margin: 0 2px;
-  }
-  form select{
-    margin: 0 30px;
-    width: 10rem;
-  }
-}
+   .header {
+     max-height: 10rem;
+   }
 
-/* modal */
-.modal{
-  display: grid;
-  justify-items: center;
-  position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 21rem;
-    height: 10rem;
-  z-index: 10;
+   form {
+     flex-direction: row;
+   }
 
-     /* From https://css.glass */
-     background: rgba(99, 250, 199, 0.25);
-     box-shadow: 0 4px 30px rgba(214, 150, 150, 0.1);
-     backdrop-filter: blur(9px);
-     -webkit-backdrop-filter: blur(9px);
-     border-radius: 15px;
-}
-.modal button{
-  height: 40px;
-  width: 100px;
-  font-weight: 500;
-}
+   form label {
+     margin: 0 2px;
+   }
+
+   form select {
+     margin: 0 30px;
+     width: 10rem;
+   }
+ }
+
+ /* modal */
+ .modal {
+   display: grid;
+   justify-items: center;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 21rem;
+   height: 10rem;
+   z-index: 10;
+   display: none;
+
+   /* From https://css.glass */
+   background: rgba(99, 250, 199, 0.25);
+   box-shadow: 0 4px 30px rgba(214, 150, 150, 0.1);
+   backdrop-filter: blur(9px);
+   -webkit-backdrop-filter: blur(9px);
+   border-radius: 15px;
+ }
+
+ .modal.show {
+   display: grid;
+ }
+
+ .modal .message {
+   font-weight: 500;
+   margin: 2rem 1rem;
+   margin-top: 3rem;
+ }
+
+ .modal button {
+   height: 40px;
+   width: 100px;
+   font-weight: 500;
+   border: none;
+   outline: none;
+   border-radius: 5px;
+
+   background: rgba(0, 0, 0, 0.25);
+   box-shadow: 0 4px 30px rgba(214, 150, 150, 0.1);
+   backdrop-filter: blur(9px);
+   -webkit-backdrop-filter: blur(9px);
+ }
+ .modal button:hover{
+  background: rgba(199, 179, 163, 0.25);
+  box-shadow: 0 4px 30px rgba(214, 150, 150, 0.1);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+
+  cursor: pointer;
+ }
 
  /* Gameboard layout */
 
@@ -185,4 +216,3 @@
    font-size: .9rem;
    padding: .8rem;
  }
-
