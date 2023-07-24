@@ -1,0 +1,58 @@
+.autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+  
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
+
+  .testimonial{
+    position: relative;
+    background-color: var(--mainBg , '#e5e7eb');
+  }
+  .testimonial::before{
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: var(--before-bg);
+    /* clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12vw), 0 98%); */
+    clip-path: polygon(100% 70%, -20% 100%, 100% 100%);
+    z-index: 2;
+  }
+  
+
+  @media screen and (min-width:768px) {
+    .testimonial::before{
+      clip-path: polygon(100% 50%, -20% 100%, 100% 100%);
+    }
+  }
+  @media screen and (min-width:1000px) {
+    .testimonial::before{
+      clip-path: polygon(100% 20%, -10% 100%, 100% 100%);
+    }
+  }
