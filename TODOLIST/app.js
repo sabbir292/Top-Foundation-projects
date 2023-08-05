@@ -369,17 +369,13 @@ function addTodo(e) {
     if(!titleVal || !getPriorityVal() || !dueDateVal){
         alert('Please fill the required Inputs*')
     }else{
-        {
             todos.push(taskObj)
             renderProjects()
             saveToLocalStorage()
             createTodoEl(taskObj)
             form.reset()
             closeForm()
-        
             updateActiveTaskCount();
-            console.log(todos)
-        }
     }
 }
 
