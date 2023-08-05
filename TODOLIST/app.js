@@ -6,9 +6,8 @@ addTaskBtn.addEventListener('click', addTodo)
 addProjectBtn.addEventListener('click', addProject)
 
 
-let currentProject = {
-    currentProjectName: 'home',
-}
+let currentProjectName = 'home'
+
 
 const Title = (state) => ({
     getTitle: () => state.title
@@ -53,6 +52,30 @@ const createProject = (id, title) => {
 let projectArr = []
 
 
+
+
+function generateUUID() {
+    // Generate an array of random bytes
+    const randomBytes = new Uint8Array(16);
+    crypto.getRandomValues(randomBytes);
+
+    // Set the version (4) and variant (RFC4122) bits
+    randomBytes[6] = (randomBytes[6] & 0x0f) | 0x40;
+    randomBytes[8] = (randomBytes[8] & 0x3f) | 0x80;
+
+    // Convert the random bytes to a hexadecimal string representation
+    const hexArray = [];
+    for (let i = 0; i < randomBytes.length; i++) {
+        hexArray.push(randomBytes[i].toString(16).padStart(2, '0'));
+    }
+
+    // Join the hexadecimal values and add the dashes to form the UUID
+    const uuid = hexArray.join('').replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/, '$1-$2-$3-$4-$5');
+    return uuid;
+}
+
+
+
 function saveToLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(todos));
     localStorage.setItem('projectArr', JSON.stringify(projectArr));
@@ -84,11 +107,9 @@ function addProject(e) {
         renderProjects();
         projectForm.reset();
         projectForm.classList.remove('show');
-        console.log(projectArr);
     }
 }
 
-// localStorage.clear()
 
 function updateActiveTaskCount() {
     const taskCountElements = document.querySelectorAll('.task-count');
@@ -97,7 +118,6 @@ function updateActiveTaskCount() {
         const projectName = countElement.previousElementSibling.textContent.toLowerCase();
         const todoCount = todos.filter(item => item.project.toLowerCase() === projectName);
         const activeTaskCount = todoCount.filter(item => item.isTaskComplete == false);
-        console.log({todos, activeTaskCount, todoCount})
         countElement.textContent = activeTaskCount.length;
     });
 }
@@ -133,28 +153,28 @@ function renderProjects() {
 
         projectCountCont.appendChild(taskCount)
         projectCont.appendChild(projectCountCont)
-        updateActiveTaskCount()
     })
+    updateActiveTaskCount()
 }
 
 
 function showProjectDetails(e) {
     e.preventDefault()
-    currentProject.currentProjectName = this.textContent.toLocaleLowerCase()
+    currentProjectName = this.textContent.toLocaleLowerCase()
     showCurrentProjcet()
     renderTodos()
     closeSideBar()
 }
 
-function deleteProject(){
+function deleteProject() {
     const parent = this.parentNode
     const title = this.nextSibling.textContent.toLocaleLowerCase()
-    
-    projectArr.map(item=> {
-        if(item.pojectTitle.toLocaleLowerCase() !== title){
+
+    projectArr.map(item => {
+        if (item.pojectTitle.toLocaleLowerCase() !== title) {
             return
-        }else{
-            projectArr = projectArr.filter(item=> item.pojectTitle.toLocaleLowerCase() !== title )
+        } else {
+            projectArr = projectArr.filter(item => item.pojectTitle.toLocaleLowerCase() !== title)
             projectCont.removeChild(parent)
             saveToLocalStorage()
             renderProjects()
@@ -195,7 +215,7 @@ const form = document.querySelector('.form')
 
 let todos = [
     {
-        id: 1,
+        id: '80f744a9-5b2c-42dd-9a5b-0e394be02fc1',
         project: 'home',
         title: 'Running',
         desc: 'Running from 6AM-7AM',
@@ -205,7 +225,7 @@ let todos = [
         isTaskComplete: false,
     },
     {
-        id: 2,
+        id: '14218a4e-10fc-43fb-ba57-7e60b5107c46',
         project: 'this week',
         title: 'Meeting',
         desc: 'Meeting with clients at 10AM',
@@ -215,7 +235,7 @@ let todos = [
         isTaskComplete: true,
     },
     {
-        id: 3,
+        id: 'fba3ed12-9a75-48e7-8a4b-9742e53e6579',
         project: 'home',
         title: 'Cooking',
         desc: 'Cooking dinner at 7PM',
@@ -225,7 +245,7 @@ let todos = [
         isTaskComplete: false,
     },
     {
-        id: 4,
+        id: 'ec9132ef-89d5-476a-91c5-6e9a01e4ee5c',
         project: 'today',
         title: 'Task Management',
         desc: 'Organize tasks and set priorities',
@@ -235,7 +255,7 @@ let todos = [
         isTaskComplete: true,
     },
     {
-        id: 5,
+        id: 'e04849e2-b5af-4f23-9465-37e36591c853',
         project: 'home',
         title: 'Gardening',
         desc: 'Water plants and trim bushes',
@@ -245,7 +265,7 @@ let todos = [
         isTaskComplete: false,
     },
     {
-        id: 6,
+        id: 'fbf2e83f-1c9a-46c1-9502-01ef5075c96d',
         project: 'today',
         title: 'Report Preparation',
         desc: 'Compile monthly report',
@@ -255,7 +275,7 @@ let todos = [
         isTaskComplete: false,
     },
     {
-        id: 7,
+        id: '6d1e1f08-d5ed-4cf4-b847-16f84a9988d5',
         project: 'this week',
         title: 'Reading',
         desc: 'Read a new book',
@@ -332,7 +352,6 @@ function addTodo(e) {
     const highPriority = document.getElementById('high').checked
     const dueDateVal = document.getElementById('dueDate').value
 
-    console.log({ dueDateVal, lowPriority, midPriority, highPriority })
 
     const getPriorityVal = () => {
         if (lowPriority === true) {
@@ -345,8 +364,8 @@ function addTodo(e) {
     }
 
     const myTodo = createTodo(
-        todos.length + 1,
-        currentProject.currentProjectName.toLocaleLowerCase(),
+        generateUUID(),
+        currentProjectName.toLocaleLowerCase(),
         titleVal,
         descriptionVal,
         formatDateToCustomFormat(dueDateVal),
@@ -356,8 +375,8 @@ function addTodo(e) {
     )
 
     const taskObj = {
-        id: todos.length + 1,
-        project: currentProject.currentProjectName.toLocaleLowerCase(),
+        id: generateUUID(),
+        project: currentProjectName.toLocaleLowerCase(),
         title: myTodo.getTitle(),
         desc: myTodo.getDescription(),
         dueDate: myTodo.getDueDate(),
@@ -366,19 +385,18 @@ function addTodo(e) {
         isTaskComplete: myTodo.isTaskComplete(),
     }
 
-    if(!titleVal || !getPriorityVal() || !dueDateVal){
+    if (!titleVal || !getPriorityVal() || !dueDateVal) {
         alert('Please fill the required Inputs*')
-    }else{
-            todos.push(taskObj)
-            renderProjects()
-            saveToLocalStorage()
-            createTodoEl(taskObj)
-            form.reset()
-            closeForm()
-            updateActiveTaskCount();
+    } else {
+        todos.push(taskObj)
+        renderProjects()
+        saveToLocalStorage()
+        createTodoEl(taskObj)
+        form.reset()
+        closeForm()
+        updateActiveTaskCount();
     }
 }
-
 
 // show and close form
 
@@ -416,15 +434,14 @@ function renderTodos() {
     allChildEls.forEach(element => {
         element.remove()
     })
-    
+
     // filtering the with with same project
     const currentProjectTodos = todos.filter(item => {
-        return item.project === currentProject.currentProjectName
+        return item.project.toLocaleLowerCase() === currentProjectName.toLocaleLowerCase()
     })
-    
+
     currentProjectTodos.map((item, idx) => {
         createTodoEl(item)
-        console.log({ item, todos })
     })
     updateActiveTaskCount()
 }
@@ -433,13 +450,10 @@ function renderTodos() {
 function toggleTaskCompletion() {
 
     const taskParent = this.parentNode.parentNode
-    const taskId = Number(this.parentNode.parentNode.dataset.id)
-    const taskTitle = document.getElementById('title')
-    console.log({ taskTitle })
+    const taskId = this.parentNode.parentNode.dataset.id
 
-    const filteredTask = todos.filter(item => Number(item.id) === taskId)
+    const filteredTask = todos.filter(item => item.id === taskId)
     const task = filteredTask[0]
-    console.log(task)
 
     if (this.checked) {
         task.isTaskComplete = true
@@ -453,7 +467,6 @@ function toggleTaskCompletion() {
         renderTodos()
         updateActiveTaskCount()
         saveToLocalStorage()
-
     }
 }
 
@@ -483,15 +496,12 @@ function createTodoEl(item) {
     const isTaskDone = document.createElement('input')
     isTaskDone.setAttribute('type', 'checkbox');
     isTaskDone.addEventListener('click', toggleTaskCompletion)
-
-
     taskDiv1.appendChild(isTaskDone)
 
     const taskTitle = document.createElement('h3')
     taskTitle.classList.add('task-title')
     taskTitle.textContent = item.title
     taskDiv1.appendChild(taskTitle)
-
 
     const taskDiv2 = document.createElement('div')
     taskDiv2.classList.add('task-div-2')
@@ -534,7 +544,6 @@ function createTodoEl(item) {
 }
 
 function createTaskModal(task) {
-    console.log('creating task modal');
 
     const taskDetailModal = document.createElement('div');
     taskDetailModal.classList.add('detail-modal');
@@ -583,22 +592,20 @@ function createTaskModal(task) {
 
     todoCont.appendChild(taskDetailModal);
 
-    console.log(task);
 }
 
 
 function showTaskDetails() {
-    console.log('showTaskDetail')
     const taskDetailsModal = document.querySelector('.detail-modal')
-    const taskId = Number(this.parentNode.parentNode.dataset.id)
+    const taskId = this.parentNode.parentNode.dataset.id
     overLay.classList.add('show')
 
     todos.map(item => {
 
-        if (Number(item.id) === taskId && taskDetailsModal) {
+        if (item.id === taskId && taskDetailsModal) {
             todoCont.removeChild(taskDetailsModal)
             createTaskModal(item)
-        } else if (Number(item.id === taskId)) {
+        } else if (item.id === taskId) {
             createTaskModal(item)
         }
         return
@@ -608,21 +615,19 @@ function showTaskDetails() {
 // edit task ----
 function editTaskDetails(e) {
 
-    const taskId = Number(this.parentNode.parentNode.dataset.id)
+    const taskId = this.parentNode.parentNode.dataset.id
 
     const confirmBtn = form.querySelector('.editTask')
     const addTaskBtn = form.querySelector('.addTask')
     const priorityConfirmBtnParent = form.querySelector('.priority-confirm')
 
-    const filteredTask = todos.filter(item => Number(item.id) === taskId)
+    const filteredTask = todos.filter(item => item.id === taskId)
     const editableTask = filteredTask[0]
 
     document.getElementById('title').value = editableTask.title
     document.getElementById('description').value = editableTask.desc
     document.getElementById('notes').value = editableTask.notes
     document.getElementById('dueDate').value = reverseDateFormat(editableTask.dueDate)
-
-    console.log(editableTask.priority)
 
     if (editableTask.priority === 'low') {
         document.getElementById('low').checked = true
@@ -637,9 +642,6 @@ function editTaskDetails(e) {
         priorityConfirmBtnParent.removeChild(confirmBtn)
     }
     const confirmEditBtn = createConfirmEditBtn(editableTask, taskId)
-    console.log(confirmEditBtn)
-    // const confirmEditBtn = document.querySelector(`.editTask`);
-
 
     addTaskBtn.classList.add('hide')
     confirmEditBtn.classList.add('show')
@@ -685,9 +687,6 @@ function editTask(e, item, editTaskBtn, addTaskBtn) {
         }
     }
 
-    console.log(getPriorityVal(), todos)
-
-
     item.title = titleVal
     item.desc = descVal
     item.notes = notesVal
@@ -704,14 +703,12 @@ function editTask(e, item, editTaskBtn, addTaskBtn) {
 }
 
 function deleteTask() {
-    const taskId = Number(this.parentNode.parentNode.dataset.id)
+    const taskId = this.parentNode.parentNode.dataset.id
     todoCont.removeChild(this.parentNode.parentNode)
-    todos = todos.filter((item) => Number(item.id) !== taskId);
-    console.log(todos)
+    todos = todos.filter((item) => item.id !== taskId);
     updateActiveTaskCount()
     saveToLocalStorage()
 }
-
 
 // loads the homepage whenever screen
 
@@ -721,31 +718,19 @@ window.addEventListener('load', () => {
     // Load projects from local storage, or initialize with default value
     projectArr = JSON.parse(localStorage.getItem('projectArr')) || [];
 
-    currentProject.currentProjectName = 'home';
+    currentProjectName = 'home';
     updateActiveTaskCount()
     showCurrentProjcet();
     renderTodos();
     renderProjects()
 });
 
-
-// window.addEventListener('load', () => {
-//     currentProject.currentProjectName = 'home';
-//     showCurrentProjcet()
-//     updateActiveTaskCount()
-//     renderProjects()
-//     renderTodos();
-// });
-
-
-
 // show current project 
 
 function showCurrentProjcet() {
     const currProjectCont = document.querySelector('.currentProject')
-    currProjectCont.textContent = currentProject.currentProjectName
+    currProjectCont.textContent = currentProjectName
 }
-
 
 //   ui-ux interactivity ---
 const sidebar = document.querySelector('.sidebar')
@@ -780,8 +765,6 @@ function closeSideBar() {
     closeMenuBtn.classList.remove('show')
 }
 
-// todo count
-
 
 // show project form
 const addProjectButton = document.querySelector('.addProject')
@@ -802,6 +785,6 @@ function closeProjectForm(e) {
 
 // FOOTER
 const footer = document.querySelector('.footer')
-footer.textContent =  `Made with  💗  by ©️ SabbirHossain ${new Date().getFullYear()}`
+footer.textContent = `Made with  💗  by ©️ SabbirHossain ${new Date().getFullYear()}`
 
 
