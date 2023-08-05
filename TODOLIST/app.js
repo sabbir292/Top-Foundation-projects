@@ -804,5 +804,8 @@ function closeProjectForm(e) {
     projectForm.classList.remove('show')
 }
 
-// form validation ----
+// FOOTER
+const footer = document.querySelector('.footer')
+footer.textContent =  `Made with  💗  by ©️ SabbirHossain ${new Date().getFullYear()}`
+
 
