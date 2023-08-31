@@ -21,7 +21,7 @@ const servicesData = [
 
 const Service = () => {
   return (
-<section className="even-col gap-14 lg:gap-24 md:mt-44 relative spacing md:pl-0 lg:pl-0">
+<section className="even-col bg-[#fff] gap-14 lg:gap-24 md:mt-44 relative spacing md:pl-0 lg:pl-0">
         <div 
         className={`hero-cont-2 h-full relative bg-right bg-cover bg-no-repeat min-h-[22rem]`}
         style={{ backgroundImage: `url(${car})` }}

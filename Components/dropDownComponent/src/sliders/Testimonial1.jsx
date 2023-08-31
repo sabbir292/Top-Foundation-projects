@@ -1,4 +1,4 @@
-import Slide from "./Slide";
+import Slide2 from "./Slide2";
 import { motion } from "framer-motion";
 
 const slides = [
@@ -90,8 +90,8 @@ const testimonial1 = () => {
 
   return (
     <motion.section 
-      className="text-gray-600 body-font py-12 h-[30rem] bg-red-50 spacing">
-      <Slide slides = {slides}/>
+      className="text-gray-600 body-font py-12 h-[30rem] bg-red-50 grid place-items-center spacing">
+      <Slide2 slides = {slides}/>
     </motion.section>
   );
 };

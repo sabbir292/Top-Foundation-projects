@@ -17,7 +17,7 @@ const Fleet = () => {
       >
         <div className="h-[70%] object-cover bg-slate-300">
           <img
-            className="object-cover w-full h-56 rounded-lg p-6"
+            className="object-cover w-full min-h-56 max-h-64 rounded-lg"
             src={url}
             alt=""
           />

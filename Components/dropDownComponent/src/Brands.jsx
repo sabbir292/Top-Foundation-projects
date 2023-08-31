@@ -44,7 +44,7 @@ const carData = [
   
   const Brands = () => {
     return (
-      <section className="grid grid-cols-4 gap-y-4 place-items-center py-8 w-full px-4 lg:flex items-center lg:justify-between md:px-[10%] lg:px-[20%] overflow-hidden md:mt-28 lg:mt-40">
+      <section className="grid bg-[#e2e2e2] grid-cols-4 gap-y-4 place-items-center py-8 w-full px-4 lg:flex items-center lg:justify-between md:px-[10%] lg:px-[20%] overflow-hidden md:mt-28 lg:mt-40">
         {carData.map(item => (
           <img key={item.id} src={item.logoLink} alt={item.brandName} className="p-2 h-14 w-14 opacity-[.7]" />
         ))}

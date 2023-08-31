@@ -6,7 +6,7 @@ const FleetData = [
       category: 'Premium',
       class: 'Luxury',
       price: 30000,
-      url: '../src/assets/audibw.png'
+      url: 'https://i.pinimg.com/564x/45/a9/be/45a9bee47ebf676c88b405208093c2c8.jpg'
     },
     {
       id: 2,
@@ -15,7 +15,7 @@ const FleetData = [
       category: 'Standard',
       class: 'Normal',
       price: 25000,
-      url: '../src/assets/bmwbw.png'
+      url: 'https://i.pinimg.com/564x/8d/97/16/8d9716afec78cd8bd0031d1c2fa56758.jpg'
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ const FleetData = [
       category: 'Sports',
       class: 'Luxury',
       price: 45000,
-      url: '../src/assets/redsupercar.png'
+      url: 'https://i.pinimg.com/564x/ed/65/5a/ed655acfac9823e2f33ef61be3afbd76.jpg'
     },
     {
       id: 4,

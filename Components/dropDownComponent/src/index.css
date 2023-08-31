@@ -59,7 +59,10 @@
         @apply absolute z-10 top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 
     }
     .spacing{
-        @apply px-4 md:px-[10%] lg:px-[20%] my-28
+        @apply px-4 md:px-[10%] lg:px-[20%] my-6 lg:my-28 py-14
+    }
+    .bg-body{
+        @apply bg-[#FFF]
     }
 }
 
