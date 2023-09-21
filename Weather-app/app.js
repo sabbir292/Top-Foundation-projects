@@ -9,7 +9,6 @@ async function getWeatherData(location = "kolkata") {
     const response = await fetch(url);
     const data = await response.json();
     const Data = data;
-    console.log(Data);
     return Data;
   } catch (error) {
     console.log(error);
@@ -22,7 +21,6 @@ window.addEventListener("load", async () => {
 });
 
 function appendData(data) {
-  console.log(data);
   let activeForcasts = "day";
   const { current, location, forecast } = data;
   const [date, time] = location.localtime.split(" ");
@@ -125,35 +123,27 @@ function appendData(data) {
   const hourPageThreeBtn = document.getElementById("3");
   const arrowRight = document.querySelector(".arrow-right");
   const arrowLeft = document.querySelector(".arrow-left");
-  console.log(hourPageOneBtn)
 
   arrowRight.addEventListener("click", () => {
     if (activeHourPage === 3) {
       activeHourPage = 1;
-      console.log('right')
-      console.log(activeHourPage)
+
       renderSecondarySection();
     } else {
       activeHourPage += 1;
-      console.log('right')
       renderSecondarySection();
-      console.log(activeHourPage)
     }
   });
   arrowLeft.addEventListener("click", () => {
     if (activeHourPage === 1) {
       activeHourPage = 3;
-      console.log('left')
-      console.log(activeHourPage)
       renderSecondarySection();
     } else {
       activeHourPage -= 1;
       renderSecondarySection();
-      console.log('left')
-      console.log(activeHourPage)
     }
   });
-  
+
   hourPageOneBtn.addEventListener("click", () => {
     if (activeHourPage !== 1) {
       activeHourPage = 1;
@@ -183,27 +173,27 @@ function appendData(data) {
       daysBtn.classList.add("active");
     }
     renderSecondarySection();
-    showPagination()
+    showPagination();
   });
-  
+
   hoursBtn.addEventListener("click", () => {
     activeForcasts = "hours";
     if (!hoursBtn.classList.contains("active")) {
       hoursBtn.classList.add("active");
     }
     renderSecondarySection();
-    showPagination()
+    showPagination();
   });
 
   function showPagination() {
-    const slideHoursBtns = document.querySelector('.slide-hours');
-    if (activeForcasts === 'hours') {
-      slideHoursBtns.style.display = 'flex';
+    const slideHoursBtns = document.querySelector(".slide-hours");
+    if (activeForcasts === "hours") {
+      slideHoursBtns.style.display = "flex";
     } else {
-      slideHoursBtns.style.display = 'none';
+      slideHoursBtns.style.display = "none";
     }
   }
-  showPagination()
+  showPagination();
 
   function renderSecondarySection() {
     if (activeForcasts === "day") {
