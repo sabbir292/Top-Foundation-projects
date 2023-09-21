@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  color: #f5f5f5;
+  background-color: aquamarine;
+  background: url("https://cdn.dribbble.com/users/5031/screenshots/3713646/attachments/832536/wallpaper_mikael_gustafsson.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  min-height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.4;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+.primary-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* Left Col */
+.left-col {
+  display: grid;
+  gap: 4px;
+}
+.weather-text {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.location {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 0 0 15px 0;
+}
+.date,
+.time {
+  font-weight: 500;
+  margin-top: -4px;
+}
+.temp {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.change-temp {
+  font-weight: 600;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.icon {
+  height: 7rem;
+  margin: 10px 0;
+}
+
+.location-search {
+  border: transparent;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  width: 8rem;
+
+  cursor: pointer;
+}
+form {
+  border-bottom: 3px solid #ffffff;
+  padding: 4px 0;
+  width: 10rem;
+}
+
+button {
+  border: transparent;
+  outline: none;
+  background-color: transparent;
+}
+button i {
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.error-message {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ec5109;
+  padding: 6px 0;
+}
+
+/* Riht Col */
+.right-col {
+  display: grid;
+  justify-content: end;
+  gap: 3rem;
+}
+.right-col > div {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 1rem;
+  width: 8rem;
+}
+
+.weather-icon svg {
+  height: 30px;
+  width: 30px;
+}
+.title {
+  font-weight: 600;
+  font-size: .8rem;
+}
+.data {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+
+.daycount{
+  display: grid;
+  grid-template-columns: 5fr 3fr 2fr;
+}
+
+/* .daycount > div{
+  width: 6rem;
+} */
+.temp-all, .forecast-icon{
+  width: 5rem;
+  display: grid;
+  justify-items: start;
+  justify-self: end;
+  padding-left: auto;
+}
+.forecast-icon img{
+  margin-left: auto;
+}
+.max-temp{
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.min-temp{
+  font-weight: 700;
+  font-size: .8rem;
+}
+
+
+.buttons{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  margin: 1rem 0;
+}
+.slide-hours{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.days, .hours, .arrow-left, .arrow-right{
+  color: #f5f5f5;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.arrow-left, .arrow-right{
+  font-size: 1.6rem;
+}
+.days.active, .hours.active{
+  border: 1px solid #f5f5f5;
+  padding: 5px 10px;
+}
+.one, .two, .three{
+  border: 1px solid #f5f5f5;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.one.active, .two.active, .three.active{
+  background-color: #f5f5f5;
+}
+
+@media screen and (min-width: 780px) {
+  .main{
+    padding: 2% 5%;
+  }
+  .secondary-section {
+    display: grid;
+    margin: 1rem 0;
+    padding-bottom: 4rem;
+    align-items: start;
+    height: 35rem;
+  }
+
+  .forecasts{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    align-self: flex-end;
+  }
+  .daycount{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
