@@ -3,7 +3,7 @@ async function getWeatherData(location = "kolkata") {
     location = "Kolkata";
   }
   const apiKey = "a89f13a28ce8442eb68132844230909";
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=7&aqi=no&alerts=no`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=7&aqi=no&alerts=no`;
 
   try {
     const response = await fetch(url);
