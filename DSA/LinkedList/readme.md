@@ -1,7 +1,7 @@
 BASIC DSA: LinkedList
 This code is a 'solution' to The Odin Project's Linked Lists Project, part of their Computer Science course/Full stack course.
 
-No TDD(JEST) used, only used basic manula testing for development.
+No TDD(JEST) was used, only basic manual testing for development.
 
 LinkedList methods:
 append(value) adds a new node containing value to the end of the list
