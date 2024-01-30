@@ -103,3 +103,5 @@ const hasApath = (graph, source, target) => {
     return false
 }
 console.log(hasApath(graph, 'a', 'f'))
+
+
