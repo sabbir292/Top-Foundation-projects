@@ -1,0 +1,16 @@
+{
+  "name": "capitalize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "capitalize.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "onchange '**/*.js' -- npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "onchange": "^7.1.0"
+  }
+}
