@@ -30,6 +30,12 @@ const caesarCipher = (str, shift) => {
       z: 26,
     };
     
+    const checkUppercase = (char) =>{
+      if(char === char.toUpperCase()) return true
+      else return false
+    }
+
+    shift =  shift % 26
 
       if(shift < 0){
         shift = 26 + shift
@@ -41,17 +47,29 @@ const caesarCipher = (str, shift) => {
       let cipheredStr = ''
       const subStr = str.split("")
       subStr.forEach(element => {
-        let idx = alphabetObj[element]
 
+        let isCapitalLetter = checkUppercase(element)
+        if(isCapitalLetter){
+          element = element.toLowerCase()
+        }
+
+        let idx = alphabetObj[element]
         let shippedIdx = idx + shift
 
         if(shippedIdx > 26){
             shippedIdx = shippedIdx - 26
         }
-        cipheredStr += alphabetArr[shippedIdx - 1]
+
+        if(isCapitalLetter){
+          cipheredStr += alphabetArr[shippedIdx - 1].toLocaleUpperCase()
+        }else{
+          cipheredStr += alphabetArr[shippedIdx - 1]
+        }
       });
 
       return cipheredStr
 }
 caesarCipher('sabbir', -1)
+console.log(-27%26)
 module.exports = caesarCipher;
+
