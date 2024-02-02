@@ -30,3 +30,7 @@ test('from SabbiR to EmnnuD', ()=> {
 test('from Sab biR to Emn nuD', ()=> {
     expect(caesarCipher('Sab biR', 64)).toBe('Emn nuD')
 })
+
+test('from AZ ijk to CB klo', ()=> {
+    expect(caesarCipher('AZ ijk', 2)).toBe('CB klm')
+})
