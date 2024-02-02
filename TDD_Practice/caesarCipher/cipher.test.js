@@ -15,3 +15,18 @@ test('from ab to bc', ()=> {
 test('from sabbir to hpqqxg', ()=> {
     expect(caesarCipher('sabbir', 15)).toBe('hpqqxg')
 })
+test('from sabbir to yghhox', ()=> {
+    expect(caesarCipher('sabbir', 32)).toBe('yghhox')
+})
+
+test('from sabbir to emnnud', ()=> {
+    expect(caesarCipher('sabbir', 64)).toBe('emnnud')
+})
+
+test('from SabbiR to EmnnuD', ()=> {
+    expect(caesarCipher('SabbiR', 64)).toBe('EmnnuD')
+})
+
+test('from Sab biR to Emn nuD', ()=> {
+    expect(caesarCipher('Sab biR', 64)).toBe('Emn nuD')
+})
