@@ -28,5 +28,12 @@ const analyzeArray = (array) => {
         return max
     }
 
+    return {
+        average: getAverage(array), 
+        min: getMin(array), 
+        max: getMax(array), 
+        length: array.length, 
+    }
+
 }
 module.exports = analyzeArray
