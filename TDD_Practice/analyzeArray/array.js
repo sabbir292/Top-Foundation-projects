@@ -17,5 +17,16 @@ const analyzeArray = (array) => {
         return min
     }
     
+    
+    const getMax = (arr) => {
+        let max = arr[0]
+        arr.forEach(element => {
+          if(element >= max){
+           return max = element
+          }
+        });
+        return max
+    }
+
 }
 module.exports = analyzeArray
