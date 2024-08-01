@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+<script defer src="bundle.js"></script></head>
+
+<body>
+    <main class="main">
+        <header class="header">
+            <div class="logo">Battleship</div>
+            <div class="message"></div>
+            <div class="mode">Player Vs Computer</div>
+        </header>
+        <section class="hero">
+
+            <div class="buttons">
+                <button class="random-ship">Random Ship</button>
+                <button class="start" disabled>Start Game</button>
+                <button class="play-again">Play Again</button>
+            </div>
+            <section class="board-area">
+
+                <div class="p-board">
+                    <div class="title player">Your Fleet</div>
+                    <div class="board-section">
+                        <div class="col-count">
+                            <div class="cell">a</div>
+                            <div class="cell">b</div>
+                            <div class="cell">c</div>
+                            <div class="cell">d</div>
+                            <div class="cell">e</div>
+                            <div class="cell">f</div>
+                            <div class="cell">g</div>
+                            <div class="cell">h</div>
+                            <div class="cell">i</div>
+                            <div class="cell">j</div>
+                        </div>
+                        <aside class="row-count">
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                        </aside>
+                        <div class="player-board board"></div>
+                    </div>
+
+                    <div class="ship-section">
+                        <aside class="indicator-title">
+                            <div class="shipyard">
+                                shipyard
+                            </div>
+                            <!-- <div class="graveyard">
+                                graveyard
+                            </div> -->
+                        </aside>
+                        <section class="ship-container">
+                            <div id="carrier" class="behicle horizontal" draggable="true">
+                                <span class="len5">
+                                    <div class="carrier1"></div>
+                                    <div class="carrier2"></div>
+                                    <div class="carrier3"></div>
+                                    <div class="carrier4"></div>
+                                    <div class="carrier5"></div>
+                                </span>
+                            </div>
+                            <div id="battleship" class="behicle horizontal" draggable="true">
+                                <span class="len4">
+                                    <div class="battleship1"></div>
+                                    <div class="battleship2"></div>
+                                    <div class="battleship3"></div>
+                                    <div class="battleship4"></div>
+                                </span>
+                            </div>
+                            <div id="cruiser" class="behicle horizontal" draggable="true">
+                                <span class="len3">
+                                    <div class="cruiser1"></div>
+                                    <div class="cruiser2"></div>
+                                    <div class="cruiser3"></div>
+                                </span>
+                            </div>
+                            <div id="submarine" class="behicle horizontal" draggable="true">
+                                <span class="len3">
+                                    <div class="submarine1"></div>
+                                    <div class="submarine2"></div>
+                                    <div class="submarine3"></div>
+                                </span>
+                            </div>
+                            <div id="destroyer" class="behicle horizontal" draggable="true">
+                                <span class="len2">
+                                    <div class="destroyer1"></div>
+                                    <div class="destroyer2"></div>
+                                </span>
+                            </div>
+
+                        </section>
+                        <div class="player-ship-indicator"></div>
+                    </div>
+
+                </div>
+                <div class="divider"></div>
+
+                <div class="e-board">
+                    <div class="title enemy">Opponent</div>
+                    <div class="board-section">
+                        <div class="col-count">
+                            <div class="cell">a</div>
+                            <div class="cell">b</div>
+                            <div class="cell">c</div>
+                            <div class="cell">d</div>
+                            <div class="cell">e</div>
+                            <div class="cell">f</div>
+                            <div class="cell">g</div>
+                            <div class="cell">h</div>
+                            <div class="cell">i</div>
+                            <div class="cell">j</div>
+                        </div>
+                        <aside class="row-count">
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                            <div class="cell">1</div>
+                        </aside>
+                        <div class="enemy-board board">
+
+                        </div>
+                    </div>
+                    <div class="ship-section">
+                        <aside class="indicator-title">
+                            <div class="e-graveyard">
+                                graveyard
+                            </div>
+                        </aside>
+                        <div class="enemy-ship-indicator"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>

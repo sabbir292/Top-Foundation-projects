@@ -1,0 +1,433 @@
+
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --cell-bg: blue;
+    --ship-bg: grey;
+    --hit: red;
+    --miss: blue;
+    --fleet-bg-p: red;
+    --fleet-bg-o: grey;
+    --grey: grey;
+}
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.main{
+    display: grid;
+    place-items: center;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.766);
+    height: 3rem;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+section{
+    display: grid;
+    place-items: center;
+}
+.hero{
+    padding: 1rem;
+}
+.ship-container{
+    max-width: 19rem;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    /* margin: 1rem 0; */
+    /* padding: 0 1rem; */
+}
+
+.ship-container #carrier{
+    min-width: 10rem;
+}
+
+.ship-container #battleship{
+    min-width: 8rem;
+}
+
+.ship-container #cruiser,.ship-container #submarine{
+    min-width: 6rem;
+}
+.ship-container #destroyer{
+    min-width: 4rem;
+}
+
+.buttons>button{
+    border: 1px solid rgb(18, 139, 143);
+    background-color: rgb(150, 200, 200);
+    padding: 8px 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.logo{
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+
+.board-area{
+    position: relative;
+    margin: 2rem;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+}
+
+.title{
+    background-color: var(--fleet-bg-p);
+    /* width: 100%; */
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    color: white;
+    padding: .5rem;
+    border-radius: .3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: sans-serif;
+
+}
+.title.enemy{
+    background-color: var(--fleet-bg-o);
+}
+.divder{
+    display: none;
+}
+.divider.show{
+    display: block;
+    outline: 1px solid grey;
+    width: 90vw;
+    margin-top: 1rem;
+}
+
+.p-board, .e-board{
+    position: relative;
+    display: grid;
+}
+
+.ship-section{
+    display: flex;
+    margin-top: 1rem;
+    height: 4rem;
+}
+
+.player-ship-indicator, .enemy-ship-indicator{
+    margin-left: 1rem;
+}
+.col-count{
+    display: flex;
+    gap: 1px;
+}
+.row-count{
+    position: absolute;
+    left: -2rem;
+    top: 4rem;
+    display: grid;
+    gap: .1rem;
+}
+
+.row-count>div, .col-count>div{
+    background-color: transparent;
+    outline: none;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.indicator-title{
+    position: absolute;
+    left: -4rem;
+    bottom: +1.8rem;
+    z-index: -10;
+}
+
+.e-graveyard{
+    position: absolute;
+    left: -.7rem;
+}
+.graveyard{
+    display: none;
+}
+.shipyard, .graveyard, .e-graveyard{
+    text-orientation: upright;
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+.board{
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(10, 1fr);
+    /* border: 1px solid skyblue; */
+    height: 21.2rem;
+    margin-bottom: 2rem;
+}
+
+.player-board, .enemy-board{
+    width: min-content;
+    height: min-content;
+}
+
+.cell{
+    display: grid;
+    height: 2rem;
+    width: 2rem;
+    outline: 1px solid skyblue;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.fill{
+    background-color: rgb(67, 147, 204);
+}
+.ship{
+    border: 3px solid blue;
+    background-color: gray;
+    z-index: 100;
+}
+.firstCell{
+    border: 2px solid red;
+}
+
+
+.ships{
+    display: grid;
+    gap: 5px;
+}
+.carrier{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    color: black;
+    border: 1px solid gray;
+    /* width: 10rem; */
+}
+.carrier div{
+    height: 2rem;
+    width: 2rem;
+}
+
+/* .ship-container>div{
+    display: flex;
+    color: black;
+    height: 2rem;
+    width: min-content;
+    border: 1px solid gray;
+}
+.ship-container>div>div{
+    width: 2rem;
+    height: 2rem;
+} */
+
+.wrong{
+    border: 2px solid red;
+}
+.valid{
+    border: 2px solid green;
+}
+.highlight{
+    background-color: rgb(103, 194, 103);
+}
+
+
+
+.ship-container.vertical{
+    display: flex;
+}
+
+/* .ship-container>div:hover{
+    cursor: pointer;
+    border: 2px solid rgb(41, 12, 231);
+}
+.ship-container>div.vertical{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 2rem;
+} */
+
+/* .carrier.vertical{
+    height: 10rem;
+}
+.battleship.vertical{
+    height: 8rem;
+}
+.cruiser.vertical{
+    height: 6rem;
+}
+.submarine.vertical{
+    height: 6rem;
+}
+.destroyer.vertical{
+    height: 4rem;
+} */
+
+.e-board{
+    display: none;
+    position: relative;
+}
+
+.e-board.show{
+    display: grid;
+    position: relative;
+}
+
+.hit{
+    position: relative;
+    font-size: 1.5rem;
+    top: 0;
+    left: 0;
+    color: var(--hit);
+    /* background-color: var(--grey); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid rgb(249, 13, 5); */
+}
+
+.missed{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: rgb(214, 224, 18);
+}
+
+
+/* ships */
+.behicle{
+    height: 2rem;
+    width: 2rem;
+}
+
+.behicle span{
+    /* border: 2px solid rgb(34, 22, 197); */
+    position: absolute;
+    background-color: rgba(83, 177, 177, 0.44);
+    border-radius: 8px;
+    z-index: -10;
+}
+
+
+/* horizontal and verticle sizes */
+.behicle.verticle{
+    .len5{
+        display: block;
+        height: calc(10rem + 4px);
+        width: 2rem;
+    }
+    .len4{
+        display: block;
+        height: calc(8rem + 3px);
+        width: 2rem;
+    }
+
+    .len3{
+        display: block;
+        height: calc(6rem + 2px);
+        width: 2rem;
+    }
+    .len2{
+        display: block;
+        height: calc(4rem + 2px);
+        width: 2rem;
+    }
+}
+
+.behicle.horizontal{
+
+    .len5{
+        display: flex;
+        width: calc(10rem + 4px);
+        height: 2rem;
+    }
+    .len4{
+        display: flex;
+        width: calc(8rem + 3px);
+        height: 2rem;
+    }
+    .len3{
+        display: flex;
+        width: calc(6rem + 2px);
+        height: 2rem;
+    }
+    .len2{
+        display: flex;
+        width: calc(4rem + 2px);
+        height: 2rem;
+    }
+}
+
+/* indicator ships */
+.player-ship-indicator,
+.enemy-ship-indicator{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+/* Common styles for player and enemy ship indicators */
+.player-ship-indicator > div,
+.enemy-ship-indicator > div {
+    display: flex;
+    margin: 0.3rem 0;
+    width: fit-content;
+}
+
+/* Styles for inner divs within player and enemy ship indicators */
+.player-ship-indicator > div > div,
+.enemy-ship-indicator > div > div {
+    height: .8rem;
+    width: .8rem;
+    border: 1px solid grey;
+}
+
+/* Styles for destroyed player and enemy ship indicators */
+.player-ship-indicator > div.destroyed,
+.enemy-ship-indicator > div.destroyed {
+    /* border: 1px solid grey; */
+    opacity: 0.4;
+}
+
+/* Styles for inner divs within destroyed player and enemy ship indicators */
+.player-ship-indicator > div.destroyed > div,
+.enemy-ship-indicator > div.destroyed > div {
+    border: 1px solid grey;
+}
+
+/* |BreakPoint */
+
+@media screen and (min-width: 700px) {
+    .board-area{
+        display: flex;
+        gap: 2rem;
+    }
+    .divider.show{
+        display: block;
+        height: 24rem;
+        width: 0;
+        margin-right: 1rem;
+        margin-top: 0;
+    }
+}
