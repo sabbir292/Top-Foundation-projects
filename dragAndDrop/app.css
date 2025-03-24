@@ -1,0 +1,39 @@
+html{
+    box-sizing: border-box;
+}
+.board{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: min-content;
+    margin: 1rem;
+}
+.ship{
+    /* border: 1px solid green; */
+    /* display: flex; */
+    /* position: relative; */
+    height: 2rem;
+    width: 2rem;
+}
+.len3{
+    border: 2px solid rgb(34, 22, 197);
+    position: absolute;
+    background-color: rgba(120, 227, 227, 0.44);
+    height: 2rem;
+    width: 6rem;
+    z-index: -14;
+    box-sizing: border-box;
+}
+.len3.orientation{
+    height: 6rem;
+    width: 2rem;
+}
+.cell{
+    height: 2rem;
+    width: 2rem;
+    z-index: 10;
+}
+
+.cell{
+    box-sizing: border-box;
+    outline: 1px solid rgba(10, 183, 177, 0.72);
+}
